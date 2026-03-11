@@ -23,4 +23,9 @@ public class API {
         return "Careful! this is limited API.\n";
     }
 
+    @GetMapping("/limited/slidingWindowLog")
+    String limitedAPISlidingWindowLog(){
+        return "Careful! this is limited API.\n";
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.PersonalProjects;
+package com.PersonalProjects.TokenBucket;
 
 public class TokenBucket {
     private final int maximumCapacity;

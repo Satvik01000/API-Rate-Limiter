@@ -1,6 +1,6 @@
 package com.personalprojects.apiratelimiter.RateLimiter;
 
-import com.PersonalProjects.TokenBucket.TokenBucketRateLimiter;
+import com.PersonalProjects.FixedWindowCounter.FixedWindowCounterRateLimiter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 @Component
-public class TokenBucketRateLimiterInterceptor implements HandlerInterceptor {
-    private final TokenBucketRateLimiter rateLimiter = new TokenBucketRateLimiter(10, 1);
+public class FixedWindowRateLimiterInterceptor implements HandlerInterceptor {
+    private final FixedWindowCounterRateLimiter rateLimiter = new FixedWindowCounterRateLimiter(60000, 10);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

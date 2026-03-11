@@ -13,8 +13,14 @@ public class API {
         return "Use as much as you want this is unlimited API!\n";
     }
 
-    @GetMapping("/limited")
-    String limitedAPI(){
+    @GetMapping("/limited/tokenBucket")
+    String limitedAPITokenBucket(){
         return "Careful! this is limited API.\n";
     }
+
+    @GetMapping("/limited/fixedWindow")
+    String limitedAPIFixedWindow(){
+        return "Careful! this is limited API.\n";
+    }
+
 }

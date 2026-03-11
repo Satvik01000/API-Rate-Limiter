@@ -1,4 +1,4 @@
-package com.PersonalProjects;
+package com.PersonalProjects.TokenBucket;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

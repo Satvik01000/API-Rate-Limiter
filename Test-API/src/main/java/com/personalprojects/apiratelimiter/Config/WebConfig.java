@@ -1,6 +1,7 @@
 package com.personalprojects.apiratelimiter.Config;
 
 import com.personalprojects.apiratelimiter.RateLimiter.FixedWindowRateLimiterInterceptor;
+import com.personalprojects.apiratelimiter.RateLimiter.SlidingWindowCounterRateLimiterInterceptor;
 import com.personalprojects.apiratelimiter.RateLimiter.SlidingWindowLogRateLimiterInterceptor;
 import com.personalprojects.apiratelimiter.RateLimiter.TokenBucketRateLimiterInterceptor;
 import org.springframework.context.annotation.Configuration;
@@ -13,11 +14,13 @@ public class WebConfig implements WebMvcConfigurer {
     private final TokenBucketRateLimiterInterceptor tokenBucketRateLimiterInterceptor;
     private final FixedWindowRateLimiterInterceptor fixedWindowRateLimiterInterceptor;
     private final SlidingWindowLogRateLimiterInterceptor slidingWindowLogRateLimiterInterceptor;
+    private final SlidingWindowCounterRateLimiterInterceptor slidingWindowCounterRateLimiterInterceptor;
 
-    public WebConfig(TokenBucketRateLimiterInterceptor tokenBucketRateLimiterInterceptor, FixedWindowRateLimiterInterceptor fixedWindowRateLimiterInterceptor, SlidingWindowLogRateLimiterInterceptor slidingWindowLogRateLimiterInterceptor) {
+    public WebConfig(TokenBucketRateLimiterInterceptor tokenBucketRateLimiterInterceptor, FixedWindowRateLimiterInterceptor fixedWindowRateLimiterInterceptor, SlidingWindowLogRateLimiterInterceptor slidingWindowLogRateLimiterInterceptor, SlidingWindowCounterRateLimiterInterceptor slidingWindowCounterRateLimiterInterceptor) {
         this.tokenBucketRateLimiterInterceptor = tokenBucketRateLimiterInterceptor;
         this.fixedWindowRateLimiterInterceptor = fixedWindowRateLimiterInterceptor;
         this.slidingWindowLogRateLimiterInterceptor = slidingWindowLogRateLimiterInterceptor;
+        this.slidingWindowCounterRateLimiterInterceptor = slidingWindowCounterRateLimiterInterceptor;
     }
 
     @Override
@@ -33,5 +36,8 @@ public class WebConfig implements WebMvcConfigurer {
 
         registry.addInterceptor(slidingWindowLogRateLimiterInterceptor)
                 .addPathPatterns("/api/limited/slidingWindowLog");
+
+        registry.addInterceptor(slidingWindowCounterRateLimiterInterceptor)
+                .addPathPatterns("/api/limited/slidingWindowCounter");
     }
 }

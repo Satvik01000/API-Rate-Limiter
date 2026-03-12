@@ -28,4 +28,9 @@ public class API {
         return "Careful! this is limited API.\n";
     }
 
+    @GetMapping("/limited/slidingWindowCounter")
+    String limitedAPISlidingWindowCounter(){
+        return "Careful! this is limited API.\n";
+    }
+
 }

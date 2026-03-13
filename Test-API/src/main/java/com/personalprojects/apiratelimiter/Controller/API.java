@@ -18,6 +18,11 @@ public class API {
         return "Careful! this is limited API.\n";
     }
 
+    @GetMapping("/limited/leakyBucket")
+    String limitedAPILeakyBucket(){
+        return "Careful! this is limited API.\n";
+    }
+
     @GetMapping("/limited/fixedWindow")
     String limitedAPIFixedWindow(){
         return "Careful! this is limited API.\n";
